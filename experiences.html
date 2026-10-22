@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Carlos Lim | Experiences</title>
+<style>
+
+/* 1. CORE REUSABLE TYPOGRAPHY */
+h1 { 
+    color: rgba(0, 0, 0, 0.8); 
+    font-family: garamond, serif; 
+    font-size: 180%; 
+    font-weight: 600; 
+    margin: 0; 
+    text-align: center;
+    padding-top: 10px; 
+}
+
+/* 2. NAVIGATION BAR */
+.navbar {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 60px;          
+    background-image: url('navbar_texture.png'); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    padding: 0 40px; 
+    box-sizing: border-box; 
+    z-index: 9999;            
+}
+
+.navbar a { 
+    color: rgba(0, 0, 0, 0.7); 
+    text-decoration: none; 
+    font-family: verdana, sans-serif; 
+    font-size: 110%; 
+    margin-left: 30px; 
+    font-weight: 500; 
+    position: relative; 
+    padding-bottom: 4px; 
+}
+
+.navbar a::after { 
+    content: ''; 
+    position: absolute; 
+    width: 100%; 
+    transform: scaleX(0); 
+    height: 2px; 
+    bottom: 0; 
+    left: 0; 
+    background-color: rgb(150, 204, 120); 
+    transform-origin: bottom right; 
+    transition: transform 0.25s ease-out; 
+}
+
+.navbar a:hover, .navbar a.active { color: rgb(150, 204, 120); }
+.navbar a:hover::after, .navbar a.active::after { transform: scaleX(1); transform-origin: bottom left; }
+
+/* 3. LAYOUT & CONTAINER STRUCTURE */
+body {
+    background: url('bg_img1.png'); 
+    background-position: top center; 
+    background-repeat: repeat-y; 
+    background-size: 100% auto; 
+    background-attachment: scroll; 
+    min-height: 3800px; 
+    margin: 0; 
+    display: grid; 
+    justify-items: center; 
+    align-content: start; 
+    gap: 20px;             
+}
+
+.paper-card {
+    background-image: url('papertexture_img1.png'); 
+    background-position: bottom; 
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15)); 
+    position: absolute; 
+    box-sizing: border-box; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 30px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.paper-card:hover {
+    filter: drop-shadow(0px 18px 25px rgba(0, 0, 0, 0.22));
+}
+
+.card-content {
+    width: 100%; 
+    height: 100%; 
+    padding: 25px 50px 30px 55px !important; 
+    box-sizing: border-box !important; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 12px;
+}
+
+.card-content ul {
+    font-family: garamond, serif !important; 
+    font-size: 135% !important; 
+    line-height: 1.6 !important; 
+    text-align: justify !important; 
+    color: rgba(20, 20, 20, 0.8) !important; 
+    margin-top: 0px !important; 
+    margin-bottom: 0 !important; 
+    padding-right: 30px !important;
+}
+
+/* 4. EXPAND GALLERY BUTTON (PAPER TAB STYLE) */
+.btn-expand-gallery {
+    margin-top: 10px;
+    padding: 10px 22px;
+    font-family: garamond, serif;
+    font-size: 115%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.18));
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-expand-gallery:hover {
+    background-color: rgb(63, 26, 248);
+    transform: translateY(-2px);
+}
+
+/* 5. KEYFRAME ANIMATIONS */
+@keyframes popOut {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0px); }
+}
+
+@keyframes popOutHeader {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0px); }
+}
+
+@keyframes floatHeader {
+    0% { transform: scale(1) translateY(0px); }
+    50% { transform: scale(1) translateY(-6px); }
+    100% { transform: scale(1) translateY(0px); }
+}
+
+/* 6. PAGE ELEMENTS & POSITIONS */
+.experiences_header_img {
+    width: 990px; 
+    height: auto; 
+    position: absolute; 
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05)); 
+    top: 160px; 
+    left: 310px;    
+    animation: 
+        popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        floatHeader 6s ease-in-out 0.8s infinite;
+}
+
+.subtitle { margin-top: 10px; }
+
+/* Card Positions */
+.experiences-card1 { 
+    top: 640px; 
+    left: 150px; 
+    width: 900px; 
+    height: 500px; 
+    padding: 0 !important; 
+    animation: popOut linear both; 
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 35%; 
+}
+
+.experiences-card2 { 
+    top: 1230px; 
+    left: 420px; 
+    width: 900px; 
+    height: 440px; 
+    padding: 0 !important; 
+    animation: popOut linear both; 
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 35%; 
+}
+
+.experiences-card3 { 
+    top: 1780px; 
+    left: 150px; 
+    width: 900px; 
+    height: 440px; 
+    padding: 0 !important; 
+    animation: popOut linear both; 
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 35%; 
+}
+
+.experiences-card4 { 
+    top: 2320px; 
+    left: 420px; 
+    width: 900px; 
+    height: 400px; 
+    padding: 0 !important; 
+    animation: popOut linear both; 
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 35%; 
+}
+
+.experiences-card5 { 
+    top: 2800px; 
+    left: 150px; 
+    width: 900px; 
+    height: 440px; 
+    padding: 0 !important; 
+    animation: popOut linear both; 
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 35%; 
+}
+
+/* 7. GALLERY SLIDER MODAL OVERLAY */
+.art-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-modal-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popOut 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.gallery-modal-container img {
+    max-width: 85vw;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-caption {
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 110%;
+    margin-top: 12px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Slider Arrow Controls */
+.nav-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 250%;
+    font-family: Arial, sans-serif;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-arrow:hover {
+    background: rgb(63, 26, 248);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow { left: -70px; }
+.next-arrow { right: -70px; }
+
+.close-btn {
+    position: absolute;
+    top: -45px; 
+    right: 0px;
+    font-size: 240%;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 1;
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.close-btn:hover { color: rgb(150, 130, 255); }
+
+/* 8. BACK TO TOP PAPER TAB */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-image: url('papertexture_img1.png');
+    background-position: center;
+    background-size: cover;
+    padding: 12px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 90%;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(20, 20, 20, 0.85);
+    border-radius: 4px;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+    z-index: 9998;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px) scale(1.05);
+    color: rgb(63, 26, 248);
+}
+
+/* 7. CONTACT CARD (Matches Overview Card typography) */
+.contact-card {
+    width: 650px;
+    height: auto;
+    padding: 0 !important;
+    position: absolute;
+    top: 3350px;
+    left: 440px;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.contact-card .card-content {
+    width: 100%;
+    height: 100%;
+    padding: 40px 50px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-card p.contact-sub {
+    font-family: 'Courier New', monospace !important;
+    font-size: 110% !important;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.65);
+    margin: 5px 0 0 0 !important;
+    text-align: center;
+}
+
+.contact-card p.contact-text {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-btn {
+    font-family: garamond, serif !important;
+    font-size: 125% !important;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff !important;
+    background-color: rgb(20, 20, 20) !important;
+    padding: 10px 22px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: rgb(63, 26, 248) !important;
+    transform: translateY(-2px);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation Header -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html" class="active">Experiences</a>
+</div>
+
+<!-- Main Page Header -->
+<img src="experiences_header.png" class="experiences_header_img" alt="Experiences Header">
+
+<!-- Card 1: Gamified ICT Research Module -->
+<div class="paper-card experiences-card1">
+    <div class="card-content">
+        <h1>Gamified ICT Assessment Module & <br>Research Presentation - 2024</h1>
+        <div class="subtitle">        
+            <ul>
+                <li><b>Served as lead contributor for the theoretical framework on a gamified research project assessing student mastery of network cabling concepts (Straight-Through vs. Crossover).</b></li>
+                <li><b>Collaborated with a development team to design turn-based quiz mechanics inspired by RPG combat systems to evaluate student learning outcomes.</b></li>
+                <li><b>Illustrated custom environment scenery and visual backgrounds; selected by the institution to present the project at an educational expo in XentroMall Antipolo.</b></li>
+            </ul>
+        </div>
+        <!-- Expand Gallery Button -->
+        <button class="btn-expand-gallery" onclick="openGallery('exp1')">View Related Photos (3)</button>
+    </div>
+</div>
+
+<!-- Card 2: Machine Learning Weather Model -->
+<div class="paper-card experiences-card2">
+    <div class="card-content">
+        <h1>Machine Learning Weather Comorbidities Model - 2026</h1>
+        <div class="subtitle">        
+            <ul>
+                <li><b>Developed a Python prediction model analyzing weather-related comorbidities using Pandas, Scikit-Learn, and Matplotlib.</b></li>
+                <li><b>Processed data to identify correlations between environmental conditions and specific health metrics.</b></li>
+                <li><b>Generated predictive visual analytics to evaluate climate and health trends.</b></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Card 3: Interactive Dinosaur Website -->
+<div class="paper-card experiences-card3">
+    <div class="card-content">
+        <h1>Interactive Dinosaur Educational Website - 2022</h1>
+        <div class="subtitle">        
+            <ul>
+                <li><b>Designed and built a web project categorizing dinosaurs by diet type, survival traits, and historical eras using HTML/CSS.</b></li>
+                <li><b>Hand-crafted all UI assets including custom banners, buttons, and background graphics using Procreate.</b></li>
+                <li><b>Structured responsive content blocks for an intuitive user learning experience.</b></li>
+            </ul>
+        </div>
+        <!-- Expand Gallery Button -->
+        <button class="btn-expand-gallery" onclick="openGallery('exp3')">View UI & Banners (2)</button>
+    </div>
+</div>
+
+<!-- Card 4: Freelance Digital Artist & Event Designer -->
+<div class="paper-card experiences-card4">
+    <div class="card-content">
+        <h1>Freelance Digital Artist & Event Designer</h1>
+        <div class="subtitle">        
+            <ul>
+                <li><b>Produced custom illustrations and graphic commissions for private clients.</b></li>
+                <li><b>Created promotional materials, flyers, and graphic layouts for campus programs.</b></li>
+                <li><b>Led event photography for kindergarten SPED programs, documenting key activities and milestones.</b></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Card 5: PUP Computer Lab Reservation App Prototype -->
+<div class="paper-card experiences-card5">
+    <div class="card-content">
+        <h1>PUP Computer Laboratory Reservation App Prototype - 2026</h1>
+        <div class="subtitle">        
+            <ul>
+                <li><b>Served as lead UI/UX designer for an interactive Figma prototype enabling class beadles to schedule and reserve university computer laboratories efficiently.</b></li>
+                <li><b>Architected low-to-high fidelity wireframes, seating floorplan maps, and user permission roles tailored for student beadles and lab administrators.</b></li>
+                <li><b>Executed the full interactive design workflow in Figma for a User-Centered Design course submission at PUP Sta. Mesa.</b></li>
+            </ul>
+        </div>
+        <!-- Expand Gallery Button -->
+        <button class="btn-expand-gallery" onclick="openGallery('exp5')">View Prototype Frames (2)</button>
+    </div>
+</div>
+
+
+<!-- Lightbox Gallery Slider Modal -->
+<div id="galleryModal" class="art-modal" onclick="closeGallery()">
+    <div class="gallery-modal-container" onclick="event.stopPropagation()">
+        <span class="close-btn" onclick="closeGallery()">&times;</span>
+        
+        <!-- Navigation Arrows -->
+        <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&#10094;</button>
+        <img id="galleryImg" src="" alt="Gallery Image">
+        <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&#10095;</button>
+        
+        <div id="galleryCaption" class="gallery-caption">1 / 3</div>
+    </div>
+</div>
+
+<!-- Floating Back To Top Button -->
+<a href="#" class="back-to-top" title="Back to top">↑ Back to Top</a>
+
+<!-- Contact / Work With Me Paper Card -->
+<div class="paper-card contact-card">
+    <div class="card-content">
+        <h1>Let's Connect & Collaborate</h1>
+        <p class="contact-sub">Commissions • Game Art • Frontend Work</p>
+        <p class="contact-text">
+            I am always open to creative commissions, game asset collaborations, and frontend web projects!
+        </p>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/jclim0621/" target="_blank" class="contact-btn">Instagram Art Gallery</a>
+            <button class="contact-btn email-btn" onclick="copyEmail(this)">Copy Email Address</button>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Slider Script -->
+<script>
+// Image sets for each experience
+const galleries = {
+    'exp1': [
+        { src: 'exp1_img1.png', caption: 'RPG Quiz Mechanics UI' },
+        { src: 'exp1_img2.jpg', caption: 'Promotional Poster' },
+        { src: 'exp1_img3.png', caption: 'Sample Interactive Slide' }
+    ],
+
+    'exp3': [
+        { src: 'exp3_img1.png', caption: 'Dinosaur Educational Website Layout' },
+        { src: 'exp3_img2.png', caption: 'Hand-Drawn Procreate UI Banners' }
+    ],
+
+    'exp5': [
+        { src: 'exp5_img1.jpg', caption: 'Lab Reservation Flow & Wireframe Overview' },
+        { src: 'exp5_img2.png', caption: 'Class Beadle Mobile Dashboard & Lab Reservation Flow' }
+    ]
+};
+
+let currentGallery = [];
+let currentIndex = 0;
+
+function openGallery(key) {
+    currentGallery = galleries[key];
+    currentIndex = 0;
+    updateSlide();
+    document.getElementById('galleryModal').style.display = 'flex';
+}
+
+function closeGallery() {
+    document.getElementById('galleryModal').style.display = 'none';
+}
+
+function changeSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) {
+        currentIndex = currentGallery.length - 1;
+    } else if (currentIndex >= currentGallery.length) {
+        currentIndex = 0;
+    }
+    updateSlide();
+}
+
+function updateSlide() {
+    const item = currentGallery[currentIndex];
+    document.getElementById('galleryImg').src = item.src;
+    document.getElementById('galleryCaption').textContent = `${item.caption} (${currentIndex + 1} of ${currentGallery.length})`;
+}
+
+// Copy Email Button Handler
+function copyEmail(btn) {
+    navigator.clipboard.writeText("juanlim0621@gmail.com");
+    const originalText = btn.textContent;
+    btn.textContent = "Copied to Clipboard!";
+    setTimeout(() => { btn.textContent = originalText; }, 2000);
+}
+</script>
+
+</body>
+</html>

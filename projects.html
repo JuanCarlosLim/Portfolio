@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Carlos Lim | Projects</title>
+<style>
+
+/* 1. CORE REUSABLE TYPOGRAPHY */
+h1 {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: garamond, serif;
+    font-size: 200%;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.subtitle {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Courier New', monospace;
+    font-size: 140%;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* 2. NAVIGATION BAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;          
+    background-image: url('navbar_texture.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;        
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 9999;            
+}
+
+.navbar a {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    font-family: verdana, sans-serif;
+    font-size: 110%;
+    margin-left: 30px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(150, 204, 120);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: rgb(150, 204, 120);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* 3. LAYOUT & CONTAINER STRUCTURE */
+body {
+    background: url('bg_img1.png');
+    background-position: top center;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-attachment: scroll; 
+    min-height: 3300px;
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 20px;             
+}
+
+.paper-card {
+    background-image: url('papertexture_img1.png'); 
+    background-position: bottom;   
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15)); 
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.paper-card:hover {
+    filter: drop-shadow(0px 18px 25px rgba(0, 0, 0, 0.22));
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+/* 4. KEYFRAME ANIMATIONS */
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
+
+@keyframes popOutHeader {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
+
+@keyframes floatHeader {
+    0% {
+        transform: scale(1) translateY(0px);
+    }
+    50% {
+        transform: scale(1) translateY(-6px);
+    }
+    100% {
+        transform: scale(1) translateY(0px);
+    }
+}
+
+/* 5. PAGE ELEMENTS & POSITIONS */
+.artprojects_header {
+    width: 950px;
+    height: auto;
+    position: absolute;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05));
+    top: 250px;
+    left: 300px;   
+    animation: 
+        popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        floatHeader 6s ease-in-out 0.8s infinite;
+}
+
+.about-card {
+    top: 830px;
+    left: 750px;
+    width: 590px;
+    height: 450px;
+    padding: 0 !important;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.about-card .card-content {
+    width: 100%;
+    height: 100%;
+    padding: 35px 50px 50px 55px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.about-card p.overview-body {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+/* 6. GALLERY ITEMS & INTERACTION */
+.sample_projects1, .sample_projects2, .sample_projects3, .sample_projects4, .sample_projects5 {
+    height: auto;
+    position: absolute;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.sample_projects1 { width: 600px; top: 800px; left: 120px; }
+.sample_projects2 { width: 600px; top: 1300px; left: 765px; }
+.sample_projects3 { width: 600px; top: 1400px; left: 120px; }
+.sample_projects4 { width: 540px; top: 1980px; left: 795px; }
+.sample_projects5 { width: 540px; top: 2020px; left: 150px; }
+
+.sample_projects1:hover, .sample_projects2:hover, .sample_projects3:hover, .sample_projects4:hover, .sample_projects5:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0px 18px 22px rgba(0, 0, 0, 0.25));
+}
+
+/* 7. CONTACT CARD (Matches Overview Card typography) */
+.contact-card {
+    width: 650px;
+    height: auto;
+    padding: 0 !important;
+    position: absolute;
+    top: 2850px;
+    left: 440px;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.contact-card .card-content {
+    width: 100%;
+    height: 100%;
+    padding: 40px 50px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-card p.contact-sub {
+    font-family: 'Courier New', monospace !important;
+    font-size: 110% !important;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.65);
+    margin: 5px 0 0 0 !important;
+    text-align: center;
+}
+
+.contact-card p.contact-text {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-btn {
+    font-family: garamond, serif !important;
+    font-size: 125% !important;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff !important;
+    background-color: rgb(20, 20, 20) !important;
+    padding: 10px 22px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: rgb(63, 26, 248) !important;
+    transform: translateY(-2px);
+}
+
+
+
+/* 8. LIGHTBOX MODAL OVERLAY */
+.art-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card {
+    position: relative !important;
+    top: auto !important; left: auto !important;
+    max-width: 80vw;
+    max-height: 85vh;
+    padding: 25px !important;
+    animation: popOut 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.modal-card img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 18px;
+    font-size: 200%;
+    font-family: Arial, sans-serif;
+    color: rgba(20, 20, 20, 0.7);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: rgb(63, 26, 248);
+}
+
+/* 9. BACK TO TOP PAPER TAB */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-image: url('papertexture_img1.png');
+    background-position: center;
+    background-size: cover;
+    padding: 12px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 90%;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(20, 20, 20, 0.85);
+    border-radius: 4px;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+    z-index: 9998;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px) scale(1.05);
+    color: rgb(63, 26, 248);
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation Header -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="experiences.html">Experiences</a>
+</div>
+
+<!-- Main Page Header -->
+<img src="projects_header.png" class="artprojects_header" alt="Projects Header">
+
+<!-- Overview Paper Card -->
+<div class="paper-card about-card">
+    <div class="card-content">
+        <h1>Overview</h1>
+        <p class="overview-body">Welcome to my Digital Art Gallery! My works range from digital posters and custom drawings to functional UI assets. Fictional and fantasy worlds are where I draw most of my inspiration because of how immersive and truly creative they are. I am looking forward to bringing video game characters to life, diving deeper into world-building, and conceptualizing fully realized interactive experiences.</p>
+    </div>
+</div>
+
+<!-- Gallery Showcase Images -->
+<img src="gallery_art1.png" class="sample_projects1" alt="Gallery Art 1">
+<img src="gallery_art2.png" class="sample_projects2" alt="Gallery Art 2">
+<img src="gallery_art3.png" class="sample_projects3" alt="Gallery Art 3">
+<img src="gallery_art4.png" class="sample_projects4" alt="Gallery Art 4">
+<img src="gallery_art5.png" class="sample_projects5" alt="Gallery Art 5">
+
+<!-- Contact / Work With Me Paper Card -->
+<div class="paper-card contact-card">
+    <div class="card-content">
+        <h1>Let's Connect & Collaborate</h1>
+        <p class="contact-sub">Commissions • Game Art • Frontend Work</p>
+        <p class="contact-text">
+            I am always open to creative commissions, game asset collaborations, and frontend web projects!
+        </p>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/jclim0621/" target="_blank" class="contact-btn">Instagram Art Gallery</a>
+            <button class="contact-btn email-btn" onclick="copyEmail(this)">Copy Email Address</button>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox Modal Container -->
+<div id="artModal" class="art-modal" onclick="closeModal()">
+    <div class="paper-card modal-card" onclick="event.stopPropagation()">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Enlarged Artwork">
+    </div>
+</div>
+
+<!-- Floating Back To Top Button -->
+<a href="#" class="back-to-top" title="Back to top">↑ Back to Top</a>
+
+<!-- Interactive Scripts -->
+<script>
+// Lightbox Click Handler
+document.querySelectorAll('.sample_projects1, .sample_projects2, .sample_projects3, .sample_projects4, .sample_projects5').forEach(img => {
+    img.addEventListener('click', () => {
+        document.getElementById('modalImg').src = img.src;
+        document.getElementById('artModal').style.display = 'flex';
+    });
+});
+
+function closeModal() {
+    document.getElementById('artModal').style.display = 'none';
+}
+
+// Copy Email Button Handler
+function copyEmail(btn) {
+    navigator.clipboard.writeText("juanlim0621@gmail.com");
+    const originalText = btn.textContent;
+    btn.textContent = "Copied to Clipboard!";
+    setTimeout(() => { btn.textContent = originalText; }, 2000);
+}
+</script>
+
+</body>
+</html>

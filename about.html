@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Carlos Lim | About</title>
+<style>
+/* Reusing core typography & navbar styles */
+h1 {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: garamond, serif;
+    font-size: 320%;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.subtitle {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Courier New', monospace;
+    font-size: 140%;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.subtitle_skills {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Courier New', monospace;
+    font-size: 140%;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.paper-card {
+    background-image: url('papertexture_img1.png'); 
+    background-position: bottom;   
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15)); 
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    
+    /* Interactive hover lift effect */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.paper-card:hover {
+    filter: drop-shadow(0px 18px 25px rgba(0, 0, 0, 0.22));
+}
+
+.skills-card-content {
+    padding-top: 0px;
+    padding-bottom: 50px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;          
+    background-image: url('navbar_texture.png'); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    padding: 0 40px; 
+    box-sizing: border-box; 
+    z-index: 9999;            
+}
+
+.navbar a {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    font-family: verdana, sans-serif;
+    font-size: 110%;
+    margin-left: 30px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(150, 204, 120);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: rgb(150, 204, 120);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+body {
+    background: url('bg_img1.png');
+    background-position: top center;
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-attachment: scroll; 
+    min-height: 3000px;
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 20px;             
+}	
+
+/* 1. Standard Scroll-Driven Pop-Out for Cards/Banners */
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
+
+/* 2. Header Entry Pop-Out */
+@keyframes popOutHeader {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
+
+/* 3. Continuous Gentle Floating Loop */
+@keyframes floatHeader {
+    0% {
+        transform: scale(1) translateY(0px);
+    }
+    50% {
+        transform: scale(1) translateY(-6px);
+    }
+    100% {
+        transform: scale(1) translateY(0px);
+    }
+}
+
+.about_header {
+    width: 860px; 
+    height: auto; 
+    position: absolute; 
+    top: 180px; 
+    left: 350px;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05)); 
+    /* Pops out in 0.8s, then smoothly transitions into an infinite 6s float */
+    animation: 
+        popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        floatHeader 6s ease-in-out 0.8s infinite;
+}
+
+.banner_pics1 {
+    width: 470px;          
+    height: auto;          
+    position: absolute;
+    top: 650px; 
+    left: 1000px;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.about-card {
+    top: 790px;
+    left: 150px;
+    width: 790px;
+    height: 500px;
+    padding: 0 !important;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.about-card .card-content {
+    width: 100%;
+    height: 100%;
+    padding: 35px 50px 50px 55px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.about-card p {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.skills-card {
+    width: 850px;
+    height: 450px;
+    position: absolute;
+    top: 1500px;
+    left: 150px;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.skills-card p {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.skills-card ul {
+    font-family: garamond, serif !important;
+    font-size: 100% !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    padding-right: 30px !important;
+}
+
+.education-card {
+    width: 850px;
+    height: 450px;
+    position: absolute;
+    top: 2050px;
+    left: 550px;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.education-card p {
+    font-family: garamond, serif !important;
+    font-size: 100% !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+    padding-right: 30px !important;
+    padding-left: 30px;
+}
+
+.education-card-content {
+   padding-bottom: 60px;
+   padding-top: 0px;
+}
+
+/* 7. CONTACT CARD (Matches Overview Card typography) */
+.contact-card {
+    width: 650px;
+    height: auto;
+    padding: 0 !important;
+    position: absolute;
+    top: 2580px;
+    left: 440px;
+    animation: popOut linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+}
+
+.contact-card .card-content {
+    width: 100%;
+    height: 100%;
+    padding: 40px 50px !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-card p.contact-sub {
+    font-family: 'Courier New', monospace !important;
+    font-size: 110% !important;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.65);
+    margin: 5px 0 0 0 !important;
+    text-align: center;
+}
+
+.contact-card p.contact-text {
+    font-family: garamond, serif !important;
+    font-size: 135% !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    color: rgba(20, 20, 20, 0.8) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-btn {
+    font-family: garamond, serif !important;
+    font-size: 125% !important;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff !important;
+    background-color: rgb(20, 20, 20) !important;
+    padding: 10px 22px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: rgb(63, 26, 248) !important;
+    transform: translateY(-2px);
+}
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html">Experiences</a>
+</div>
+
+<img src="banner_pics1.png" class="banner_pics1" alt="banner Image">
+<img src="about_header.png" class="about_header" alt="about header">
+
+<div class="paper-card about-card">
+    <div class="card-content">
+        <h1>About Me</h1>
+        <p class="subtitle">I am a BSIT student at PUP Sta. Mesa who leverages technical workflows to bring digital worlds and stories to life. My true focus lies in digital asset creation and illustrative design, using frontend logic to translate hand-crafted scenery into interactive realities. Having championed research presentations at public expos, I excel in high-impact communication and project delivery. I am building toward a career in game development, where I can blend my performance strengths, visual art pipelines, and software design to build memorable player experiences.</p>
+    </div>
+</div>
+
+<div class="paper-card skills-card">
+    <div class="skills-card-content">
+        <h1>Skills & Technologies</h1>
+        <div class="subtitle_skills">
+            <ul>
+                <li><b>Programming Languages:</b> C, C++, Python, HTML/CSS</li>
+                <li><b>Data Science & ML Libraries:</b> Pandas, Scikit-Learn, Matplotlib</li>
+                <li><b>Digital Illustration & Design:</b> Procreate, Custom Asset Creation, Game Scenery Design</li>
+                <li><b>Technical Concepts:</b> Gamified Learning Frameworks, Machine Learning Logic, Web UI Design</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="paper-card education-card">
+    <div class="education-card-content">
+        <h1>Education</h1>
+        <div class="subtitle_skills">
+            <p>
+                <b>Bachelor of Science in Information Technology <br> Polytechnic University of the Philippines | Sta. Mesa, Metro Manila <br> Expected Graduation: 2028 (BSIT)<br><br>
+                <b>Senior High School – ICT Strand <br>
+                <b>FEU Roosevelt Marikina | Marikina City, Metro Manila <br>
+                <b>Graduated: 2024
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact / Work With Me Paper Card -->
+<div class="paper-card contact-card">
+    <div class="card-content">
+        <h1>Let's Connect & Collaborate</h1>
+        <p class="contact-sub">Commissions • Game Art • Frontend Work</p>
+        <p class="contact-text">
+            I am always open to creative commissions, game asset collaborations, and frontend web projects!
+        </p>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/jclim0621/" target="_blank" class="contact-btn">Instagram Art Gallery</a>
+            <button class="contact-btn email-btn" onclick="copyEmail(this)">Copy Email Address</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+// Copy Email Button Handler
+function copyEmail(btn) {
+    navigator.clipboard.writeText("juanlim0621@gmail.com");
+    const originalText = btn.textContent;
+    btn.textContent = "Copied to Clipboard!";
+    setTimeout(() => { btn.textContent = originalText; }, 2000);
+}
+</script>
+
+</body>
+</html>
