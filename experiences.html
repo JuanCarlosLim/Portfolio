@@ -165,8 +165,8 @@ body {
     height: auto; 
     position: absolute; 
     filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05)); 
-    top: 160px; 
-    left: 310px;    
+    top: 170px; 
+    left: 260px;    
     animation: 
         popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
         floatHeader 6s ease-in-out 0.8s infinite;
@@ -425,13 +425,15 @@ body {
     }
 
     .experiences_header_img {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 90% !important;
+        position: static !important;
+        width: 100% !important;
         max-width: 380px !important;
         height: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 55% !important;
+        margin-top: 55% !important;
+        margin-left: 0% !important;
+
+
     }
 
     .paper-card {
@@ -442,7 +444,7 @@ body {
         max-width: 420px !important;
         height: auto !important;
         margin: 15px auto !important;
-        padding: 20px 15px !important;
+        padding: 0 0 !important;
     }
 
     .experiences-card1, .experiences-card2, .experiences-card3, .experiences-card4, .experiences-card5, .contact-card {
@@ -451,7 +453,11 @@ body {
     }
 
     .card-content {
-        padding: 20px 15px !important;
+        margin-top: 2% !important;
+    }
+
+    .contact-card .card-content {
+        padding: 30px 20px !important;
     }
 
     h1 {
@@ -460,9 +466,17 @@ body {
     }
 
     .subtitle ul, .card-content ul {
-        font-size: 100% !important;
-        padding-right: 0 !important;
-        text-align: left !important;
+        font-size: large !important;
+        text-align: justify !important;
+        margin-left: 0% !important;
+        margin-bottom: 10% !important;
+        margin-top: 5% !important;
+        padding-left: 0% !important;
+        padding-right: 0% !important;   
+    }
+
+    .subtitle ul li, .card-content ul li{
+        padding: 5% 0px !important;
     }
 
     /* Adjust modal arrows for touch screens */

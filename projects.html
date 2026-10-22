@@ -157,7 +157,7 @@ body {
     }
 }
 
-/* 5. PAGE ELEMENTS & POSITIONS */
+/* 5. PAGE ELEMENTS & DESKTOP POSITIONS */
 .artprojects_header {
     width: 950px;
     height: auto;
@@ -224,7 +224,7 @@ body {
     filter: drop-shadow(0px 18px 22px rgba(0, 0, 0, 0.25));
 }
 
-/* 7. CONTACT CARD (Matches Overview Card typography) */
+/* 7. CONTACT CARD */
 .contact-card {
     width: 650px;
     height: auto;
@@ -294,8 +294,6 @@ body {
     transform: translateY(-2px);
 }
 
-
-
 /* 8. LIGHTBOX MODAL OVERLAY */
 .art-modal {
     display: none;
@@ -362,6 +360,107 @@ body {
 .back-to-top:hover {
     transform: translateY(-4px) scale(1.05);
     color: rgb(63, 26, 248);
+}
+
+/* 10. TRUE MOBILE-FRIENDLY RESPONSIVE STYLES */
+@media (max-width: 850px) {
+    body {
+        min-height: auto !important;
+        padding-top: 80px;
+        padding-bottom: 60px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+    }
+
+    .navbar {
+        justify-content: center !important;
+        padding: 0 15px !important;
+    }
+
+    .navbar a {
+        font-size: 95% !important;
+        margin: 0 10px !important;
+    }
+
+    /* Convert absolute positioned elements to natural flex items */
+    .artprojects_header,
+    .paper-card,
+    .sample_projects1, 
+    .sample_projects2, 
+    .sample_projects3, 
+    .sample_projects4, 
+    .sample_projects5 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        height: auto !important;
+    }
+
+    .artprojects_header {
+        width: 90% !important;
+        max-width: 400px !important;
+        position: static !important;
+        margin-top: 55% !important;
+        margin-bottom: 55% !important;
+
+    }
+
+    .paper-card {
+        width: 90% !important;
+        max-width: 450px !important;
+        padding: 25px 20px !important;
+    }
+
+    .about-card .card-content,
+    .contact-card .card-content {
+        padding: 0 !important;
+    }
+
+    .about-card p.overview-body,
+    .contact-card p.contact-text {
+        font-size: 110% !important;
+        line-height: 1.5 !important;
+    }
+
+    .about-card p.overview-body{
+        margin-top: -2% !important;
+        margin-bottom: 5% !important;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+
+    }
+
+    .sample_projects1, 
+    .sample_projects2, 
+    .sample_projects3, 
+    .sample_projects4, 
+    .sample_projects5 {
+        width: 90% !important;
+        max-width: 450px !important;
+    }
+
+    .contact-links {
+        flex-direction: column !important;
+        width: 100%;
+        gap: 10px !important;
+    }
+
+    .contact-btn {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 105% !important;
+        padding: 12px 15px !important;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 80%;
+    }
 }
 
 </style>
