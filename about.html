@@ -218,7 +218,7 @@ body {
     text-align: justify !important;
     color: rgba(20, 20, 20, 0.8) !important;
     margin-top: 15px !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 5% !important;
 }
 
 .skills-card {
@@ -250,7 +250,7 @@ body {
     text-align: justify !important;
     color: rgba(20, 20, 20, 0.8) !important;
     margin-top: 10px !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 5% !important;
     padding-right: 30px !important;
 }
 
@@ -273,7 +273,8 @@ body {
     text-align: justify !important;
     color: rgba(20, 20, 20, 0.8) !important;
     margin-top: 12px !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 5% !important;
+    margin-left: 5% !important;
     padding-right: 30px !important;
     padding-left: 30px;
 }
@@ -377,9 +378,9 @@ body {
     }
 
     .about_header {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: static !important;
+        margin-top: 50% !important;
+        margin-left: 3% !important;
         width: 90% !important;
         max-width: 380px !important;
         height: auto !important;
@@ -387,13 +388,13 @@ body {
     }
 
     .banner_pics1 {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: static !important;
+        margin-top: 100% !important;
+        margin-left: 10% !important;
         width: 85% !important;
         max-width: 360px !important;
         height: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: -15% !important;
     }
 
     .paper-card {
@@ -410,6 +411,8 @@ body {
     .about-card, .skills-card, .education-card, .contact-card {
         width: 90% !important;
         height: auto !important;
+        position: relative !important;
+        margin-top: 20% !important;
     }
 
     .about-card .card-content {
@@ -430,13 +433,23 @@ body {
     }
 
     .skills-card ul {
-        padding-right: 10px !important;
-        font-size: 95% !important;
+        font-size: medium !important;
+        text-align: center !important; 
+        margin-left: 0% !important;
+        padding-left: 10% !important;
+        padding-right: 10% !important;
     }
+
+    .skills-card ul li{
+        padding: 5% 0px !important;
+    }
+
 
     .education-card p {
         padding-left: 0 !important;
         padding-right: 0 !important;
+        font-size: medium !important;
+        text-align: left !important;
     }
 
     .contact-card .card-content {
@@ -468,9 +481,10 @@ body {
     <a href="projects.html">Projects</a>
     <a href="experiences.html">Experiences</a>
 </div>
+<div class="about-section">
 
-<img src="banner_pics1.png" class="banner_pics1" alt="banner Image">
 <img src="about_header.png" class="about_header" alt="about header">
+<img src="banner_pics1.png" class="banner_pics1" alt="banner Image">
 
 <div class="paper-card about-card">
     <div class="card-content">
@@ -485,7 +499,6 @@ body {
         <div class="subtitle_skills">
             <ul>
                 <li><b>Programming Languages:</b> C, C++, Python, HTML/CSS</li>
-                <li><b>Data Science & ML Libraries:</b> Pandas, Scikit-Learn, Matplotlib</li>
                 <li><b>Digital Illustration & Design:</b> Procreate, Custom Asset Creation, Game Scenery Design</li>
                 <li><b>Technical Concepts:</b> Gamified Learning Frameworks, Machine Learning Logic, Web UI Design</li>
             </ul>
