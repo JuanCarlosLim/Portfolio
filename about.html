@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juan Carlos Lim | About</title>
 <style>
-/* Reusing core typography & navbar styles */
+/* Core Typography & Base Styling */
 h1 {
     color: rgba(0, 0, 0, 0.8);
     font-family: garamond, serif;
-    font-size: 320%;
+    font-size: 280%;
     font-weight: 600;
-    margin: 0;
+    margin: 0 0 15px 0;
     text-align: center;
 }
 
 .subtitle {
     color: rgba(0, 0, 0, 0.6);
     font-family: 'Courier New', monospace;
-    font-size: 140%;
+    font-size: 120%;
     font-weight: bold;
     margin: 0;
     letter-spacing: 0.5px;
@@ -28,39 +28,15 @@ h1 {
 .subtitle_skills {
     color: rgba(0, 0, 0, 0.6);
     font-family: 'Courier New', monospace;
-    font-size: 140%;
+    font-size: 110%;
     font-weight: bold;
     margin: 0;
     letter-spacing: 0.5px;
     text-align: left;
+    width: 100%;
 }
 
-.paper-card {
-    background-image: url('papertexture_img1.png'); 
-    background-position: bottom;   
-    background-repeat: no-repeat; 
-    background-size: cover;        
-    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15)); 
-    position: absolute;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    
-    /* Interactive hover lift effect */
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
-}
-
-.paper-card:hover {
-    filter: drop-shadow(0px 18px 25px rgba(0, 0, 0, 0.22));
-}
-
-.skills-card-content {
-    padding-top: 0px;
-    padding-bottom: 50px;
-}
-
+/* Navbar Styling */
 .navbar {
     position: fixed;
     top: 0;
@@ -115,177 +91,104 @@ h1 {
     transform-origin: bottom left;
 }
 
+/* Unified Flex Body Layout */
 body {
     background: url('bg_img1.png');
     background-position: top center;
     background-repeat: repeat-y;
     background-size: 100% auto;
-    background-attachment: scroll; 
-    min-height: 3000px;
     margin: 0;
-    display: grid;
-    justify-items: center;
-    align-content: start;
-    gap: 20px;             
+    padding-top: 100px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    min-height: 100vh;
+    box-sizing: border-box;
 }   
 
 /* Animations */
 @keyframes popOut {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0px);
-    }
-}
-
-@keyframes popOutHeader {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0px);
-    }
+    0% { opacity: 0; transform: scale(0.9) translateY(15px); }
+    100% { opacity: 1; transform: scale(1) translateY(0px); }
 }
 
 @keyframes floatHeader {
-    0% { transform: scale(1) translateY(0px); }
-    50% { transform: scale(1) translateY(-6px); }
-    100% { transform: scale(1) translateY(0px); }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
 }
 
-/* Desktop Absolute Positioning */
+/* Header & Banner Images (Fluid Flex Elements) */
 .about_header {
-    width: 860px; 
-    height: auto; 
-    position: absolute; 
-    top: 180px; 
-    left: 350px;
-    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05)); 
-    animation: 
-        popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-        floatHeader 6s ease-in-out 0.8s infinite;
+    width: 90%;
+    max-width: 750px;
+    height: auto;
+    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05));
+    animation: popOut 0.8s ease forwards, floatHeader 6s ease-in-out 0.8s infinite;
 }
 
 .banner_pics1 {
-    width: 470px;          
-    height: auto;          
-    position: absolute;
-    top: 650px; 
-    left: 1000px;
+    width: 85%;
+    max-width: 420px;
+    height: auto;
     filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
-    animation: popOut linear both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 35%;
 }
 
-.about-card {
-    top: 790px;
-    left: 150px;
-    width: 790px;
-    height: 500px;
-    padding: 0 !important;
-    animation: popOut linear both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 35%;
+/* Unified Paper Cards */
+.paper-card {
+    background-image: url('papertexture_img1.png'); 
+    background-position: bottom;   
+    background-repeat: no-repeat; 
+    background-size: cover;        
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.15)); 
+    width: 90%;
+    max-width: 800px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50px;
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
 }
 
-.about-card .card-content {
+.paper-card:hover {
+    filter: drop-shadow(0px 18px 25px rgba(0, 0, 0, 0.22));
+    transform: translateY(-3px);
+}
+
+.card-content {
     width: 100%;
-    height: 100%;
-    padding: 35px 50px 50px 55px !important;
-    box-sizing: border-box !important;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
 }
 
-.about-card p {
+/* Paragraph & List Typography Inside Cards */
+.paper-card p {
     font-family: garamond, serif !important;
-    font-size: 135% !important;
+    font-size: 125% !important;
     line-height: 1.6 !important;
     text-align: justify !important;
     color: rgba(20, 20, 20, 0.8) !important;
-    margin-top: 15px !important;
-    margin-bottom: 0 !important;
+    margin: 15px 0 0 0 !important;
 }
 
-.skills-card {
-    width: 850px;
-    height: 450px;
-    position: absolute;
-    top: 1500px;
-    left: 150px;
-    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
-    animation: popOut linear both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 35%;
-}
-
-.skills-card p, .skills-card ul {
+.skills-card ul {
     font-family: garamond, serif !important;
-    font-size: 100% !important;
-    line-height: 1.6 !important;
-    text-align: justify !important;
+    font-size: 110% !important;
+    line-height: 1.7 !important;
+    text-align: left !important;
     color: rgba(20, 20, 20, 0.8) !important;
-    margin-top: 10px !important;
-    margin-bottom: 0 !important;
-    padding-right: 30px !important;
+    margin: 15px 0 0 0 !important;
+    padding-left: 20px !important;
 }
 
-.education-card {
-    width: 850px;
-    height: 450px;
-    position: absolute;
-    top: 2050px;
-    left: 550px;
-    filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.15));
-    animation: popOut linear both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 35%;
-}
-
-.education-card p {
-    font-family: garamond, serif !important;
-    font-size: 100% !important;
-    line-height: 1.6 !important;
-    text-align: justify !important;
-    color: rgba(20, 20, 20, 0.8) !important;
-    margin-top: 12px !important;
-    margin-bottom: 0 !important;
-    padding-right: 30px !important;
-    padding-left: 30px;
-}
-
-.education-card-content {
-   padding-bottom: 60px;
-   padding-top: 0px;
-}
-
-.contact-card {
-    width: 650px;
-    height: auto;
-    padding: 0 !important;
-    position: absolute;
-    top: 2580px;
-    left: 440px;
-    animation: popOut linear both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 35%;
-}
-
+/* Contact Section Specifics */
 .contact-card .card-content {
-    width: 100%;
-    height: 100%;
-    padding: 40px 50px !important;
-    box-sizing: border-box !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -299,30 +202,25 @@ body {
 }
 
 .contact-card p.contact-text {
-    font-family: garamond, serif !important;
-    font-size: 135% !important;
-    line-height: 1.6 !important;
     text-align: center !important;
-    color: rgba(20, 20, 20, 0.8) !important;
-    margin-top: 15px !important;
-    margin-bottom: 0 !important;
 }
 
 .contact-links {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
 }
 
 .contact-btn {
     font-family: garamond, serif !important;
-    font-size: 125% !important;
+    font-size: 120% !important;
     font-weight: bold;
     text-decoration: none;
     color: #ffffff !important;
     background-color: rgb(20, 20, 20) !important;
-    padding: 10px 22px;
+    padding: 12px 24px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -335,130 +233,36 @@ body {
     transform: translateY(-2px);
 }
 
-
-/* MOBILE RESPONSIVE STYLES (Phones & Small Screens) */
-@media (max-width: 768px) {
-    
-    body {
-        min-height: auto !important;
-        padding-top: 80px;
-        padding-bottom: 50px;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
+/* Simple Mobile Adjustments (For very small screens) */
+@media (max-width: 600px) {
     .navbar {
-        justify-content: center !important;
-        padding: 0 15px !important;
+        padding: 0 15px;
+        justify-content: center;
     }
-
     .navbar a {
-        font-size: 95% !important;
-        margin: 0 10px !important;
+        font-size: 90%;
+        margin: 0 8px;
     }
-
-    /* Set exact display order for mobile flex layout */
-    .about_header {
-        order: 1 !important;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        width: 90% !important;
-        max-width: 380px !important;
-        height: auto !important;
-        margin-bottom: 15px !important;
-    }
-
-    .banner_pics1 {
-        order: 2 !important;
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        width: 85% !important;
-        max-width: 360px !important;
-        height: auto !important;
-        margin-bottom: 20px !important;
-    }
-
     .paper-card {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        width: 90% !important;
-        max-width: 420px !important;
-        height: auto !important;
-        margin: 15px auto !important;
-        padding: 25px 20px !important;
+        padding: 25px 20px;
+        width: 95%;
     }
-
-    .about-card {
-        order: 3 !important;
-        width: 90% !important;
-        height: auto !important;
+    h1 {
+        font-size: 220%;
     }
-
-    .skills-card {
-        order: 4 !important;
-        width: 90% !important;
-        height: auto !important;
+    .subtitle, .subtitle_skills {
+        font-size: 100%;
     }
-
-    .education-card {
-        order: 5 !important;
-        width: 90% !important;
-        height: auto !important;
+    .paper-card p, .skills-card ul {
+        font-size: 110% !important;
     }
-
-    .contact-card {
-        order: 6 !important;
-        width: 90% !important;
-        height: auto !important;
-    }
-
-    .about-card .card-content {
-        padding: 25px 20px !important;
-    }
-
-    .about-card h1, .skills-card h1, .education-card h1, .contact-card h1 {
-        font-size: 220% !important;
-    }
-
-    .about-card p.subtitle, .skills-card .subtitle_skills, .education-card p {
-        font-size: 105% !important;
-        line-height: 1.5 !important;
-    }
-
-    .skills-card-content, .education-card-content {
-        padding-bottom: 0 !important;
-    }
-
-    .skills-card ul {
-        padding-right: 10px !important;
-        font-size: 95% !important;
-    }
-
-    .education-card p {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    .contact-card .card-content {
-        padding: 30px 20px !important;
-    }
-
     .contact-links {
-        flex-direction: column !important;
+        flex-direction: column;
         width: 100%;
-        gap: 10px !important;
     }
-
     .contact-btn {
         width: 100%;
-        box-sizing: border-box;
         text-align: center;
-        font-size: 105% !important;
-        padding: 12px 15px !important;
     }
 }
 </style>
@@ -472,7 +276,7 @@ body {
     <a href="experiences.html">Experiences</a>
 </div>
 
-<!-- Render order updated: Header banner first, landing picture second -->
+<!-- Flex Flow Order -->
 <img src="about_header.png" class="about_header" alt="about header">
 <img src="banner_pics1.png" class="banner_pics1" alt="banner Image">
 
@@ -484,7 +288,7 @@ body {
 </div>
 
 <div class="paper-card skills-card">
-    <div class="skills-card-content">
+    <div class="card-content">
         <h1>Skills & Technologies</h1>
         <div class="subtitle_skills">
             <ul>
@@ -498,7 +302,7 @@ body {
 </div>
 
 <div class="paper-card education-card">
-    <div class="education-card-content">
+    <div class="card-content">
         <h1>Education</h1>
         <div class="subtitle_skills">
             <p>
