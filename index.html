@@ -179,7 +179,6 @@ body {
     top: 180px; 
     left: 300px;
     filter: drop-shadow(0px 12px 15px rgba(0, 0, 0, 0.05)); 
-    /* Pops out in 0.8s, then smoothly loops the 6s floating motion */
     animation: 
         popOutHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
         floatHeader 6s ease-in-out 0.8s infinite;
@@ -254,6 +253,99 @@ body {
     margin-bottom: 0 !important;
 }
 
+
+/* 5. MOBILE RESPONSIVE STYLES (Phones & Tablets) */
+@media (max-width: 768px) {
+    
+    body {
+        min-height: auto !important;
+        padding-top: 80px;
+        padding-bottom: 40px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .navbar {
+        justify-content: center !important;
+        padding: 0 15px !important;
+    }
+
+    .navbar a {
+        font-size: 95% !important;
+        margin: 0 10px !important;
+    }
+
+    .welcome_header {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 90% !important;
+        max-width: 380px !important;
+        height: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+    .front-image {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 80% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+    .fabric1 {
+        display: none !important; /* Hides background accent on mobile to avoid clutter */
+    }
+
+    .paper-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 90% !important;
+        max-width: 420px !important;
+        height: auto !important;
+        margin: 15px auto !important;
+        padding: 25px 20px !important;
+    }
+
+    .intro-card {
+        padding: 30px 20px !important;
+    }
+
+    .intro-card h1 {
+        font-size: 240% !important;
+    }
+
+    .intro-card .subtitle {
+        font-size: 110% !important;
+    }
+
+    .intro-card .skills {
+        font-size: 90% !important;
+    }
+
+    .welcome-card {
+        padding: 0 !important;
+    }
+
+    .welcome-card .card-content {
+        padding: 30px 25px !important;
+    }
+
+    .welcome-card h1 {
+        font-size: 180% !important;
+    }
+
+    .welcome-card p.subtitle {
+        font-size: 110% !important;
+        line-height: 1.5 !important;
+        text-align: left !important;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -267,9 +359,9 @@ body {
 </div>
 
 <!-- Left Visual Layering -->
+<img src="welcome_header.png" class="welcome_header" alt="Welcome Header">
 <img src="profile_pics1.png" class="front-image" alt="Profile Picture">
 <img src="fabric1.png" class="fabric1" alt="Fabric Texture Accent">
-<img src="welcome_header.png" class="welcome_header" alt="Welcome Header">
 
 <!-- Main Hero Intro Card -->
 <div class="paper-card intro-card">
